@@ -591,6 +591,7 @@ class AzureInventory(object):
                             public_ip_address = self._network_client.public_ip_addresses.get(
                                 public_ip_reference['resourceGroups'],
                                 public_ip_reference['publicIPAddresses'])
+                            host_vars['ansible_ssh_host'] = public_ip_address.ip_address
                             host_vars['ansible_host'] = public_ip_address.ip_address
                             host_vars['public_ip'] = public_ip_address.ip_address
                             host_vars['public_ip_name'] = public_ip_address.name
